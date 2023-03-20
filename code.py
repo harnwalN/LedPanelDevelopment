@@ -78,16 +78,16 @@ while c<cornerLength:
     c=c+1"""
 
 
-#Working border
-i=0
-while i<bitWidth:
-    bitmap1[i, 0] = (i%4)+1
-    bitmap1[i, 1] = (i%4)+1
-    bitmap1[i, 31] = (i%4)+1
-    bitmap1[i, 30] = (i%4)+1
-    i=i+1
+# Working border
+i = 0
+while i < bitWidth:
+    bitmap1[i, 0] = (i % 4)+1
+    bitmap1[i, 1] = (i % 4)+1
+    bitmap1[i, 31] = (i % 4)+1
+    bitmap1[i, 30] = (i % 4)+1
+    i = i+1
 
-h=0
+h = 0
 """while h<bitLength-4:
     bitmap1[0, h+2] = (h%2)+1
     bitmap1[1, h+2] = (h%2)+1
@@ -95,16 +95,17 @@ h=0
     bitmap1[62, h+2] = (h%2)+2
     h=h+1"""
 
-palette1 = displayio.Palette(color_count = 7)
-palette1[0] = 0x000000 # black
-palette1[1] = 0xFFFF00 # yellow
-palette1[2] = 0xFFFF00 # yellow again
-palette1[3] = 0x326fa8 # blue
-palette1[4] = 0x326fa8 # blue
-palette1[5] = 0xFFFF00 # yellow again
-palette1[6] = 0xFFFF00 # yellow again
+palette1 = displayio.Palette(color_count=7)
+palette1[0] = 0x000000  # black
+palette1[1] = 0xFFFF00  # yellow
+palette1[2] = 0xFFFF00  # yellow again
+palette1[3] = 0x326fa8  # blue
+palette1[4] = 0x326fa8  # blue
+palette1[5] = 0xFFFF00  # yellow again
+palette1[6] = 0xFFFF00  # yellow again
 
-tilegrid1 = displayio.TileGrid(bitmap=bitmap1, pixel_shader=palette1, width=64, height=32, default_tile=0)
+tilegrid1 = displayio.TileGrid(
+    bitmap=bitmap1, pixel_shader=palette1, width=64, height=32, default_tile=0)
 
 
 line1 = adafruit_display_text.label.Label(
@@ -117,7 +118,7 @@ line1.y = 8
 line2 = adafruit_display_text.label.Label(
     font=terminalio.FONT,
     color=0xFBFF00,
-    text="Zoll, Intuitive Foundation, NASA, ETM Manufacturing, Rockwell Automation, Patriot Beverages, UML Arc, Workers Credit Union, The Mighty Oak Fund, Tuck & Tuck Architects, Lily Pulitzer, Millipore Sigma, PTC, Gore Foundation, Miller Family, Bruce & Sue Bonner, Tari Radin")
+    text="Patriot Beverages, Deployed Resources, Bruce & Sue Bonner, NASA, Workers Credit Union, UML ARC, ZOLL, Rockwell Automation, ETM Manufacturing, The Mighty Oak Fund, Intuitive Foundation, Millipore Sigma, PTC, Lilly Pulitzer, Tuck & Tuck Architects, Rotary Club of Littleton, Gore Foundation, Brett & Katie Bonner, Trina & Brian Miller, Michelle & Christopher Tuck, MBA Team, Headwall, Table Talk Pies, Burroughs Foundation, Couper Foundation, Bryan Newman, The Quan/Luh Family")
 line2.x = display.width
 line2.y = 23
 
@@ -132,6 +133,7 @@ def scroll(line):
     if line.x < -line_width:
         line.x = display.width
 
+
 def PaletteSwap(palette):
     oldPalette1 = palette[1]
     oldPalette2 = palette[2]
@@ -144,6 +146,7 @@ def PaletteSwap(palette):
     palette[4] = oldPalette2
     display.refresh()
 
+
 # You can add more effects in this loop. For instance, maybe you want to set the
 # color of each label to a different value.
 while True:
@@ -151,4 +154,4 @@ while True:
     scroll(line1)
     scroll(line2)
     sleep(0.0001)
-    display.refresh(minimum_frames_per_second=0)# Write your code here :-)
+    display.refresh(minimum_frames_per_second=0)  # Write your code here :-)
