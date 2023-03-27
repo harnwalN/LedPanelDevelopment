@@ -17,6 +17,7 @@ from adafruit_bitmap_font import bitmap_font
 from adafruit_display_text import label
 from time import sleep
 from rainbowio import colorwheel
+import math
 
 # If there was a display before (protomatter, LCD, or E-paper), release it so
 # we can create ours
@@ -44,20 +45,43 @@ display = framebufferio.FramebufferDisplay(matrix, auto_refresh=False)
 line1 = adafruit_display_text.label.Label(
     font=terminalio.FONT,
     color=0x0066FF,
-    text="banana split")
+    text="BANANA\nSPLIT")
 line1.x = display.width
-line1.y = 8
+line1.y = 6
 
 
-def scroll(line):
-    line.x = line.x - 64
-    line_width = line.bounding_box[2]
+def pan(line):
+    line.x = line.x - 1
+    line_width = line.bounding_box[2]-64
     if line.x < -line_width:
-        line.x = display.width
+        line.x = 29
 
+def unpan(line):
+    line.x = line.x + 1
+    line_width = line.bounding_box[2]-64
+    if line.x < -line_width:
+        line.x = 29
 
+"""
+# Not working yet
+def rotate(Bitmap, W, L):
+    w=0
+    l=0
+    while l<L:
+        while w<W:
+            Bitmap[w, l] = Bitmap[-((math.cos(math.degrees(90))*w)-(math.sin(math.degrees(90))*l)), (math.sin(math.degrees(90))*w) + (math.cos(math.degrees(90))*l)]
+            w=w+1
+        w=0
+        l=l+1
+"""
 # Setup the file as the bitmap data source
+
+
 bitmap = displayio.OnDiskBitmap("/Banana.bmp")
+
+bitmap1 = displayio.Bitmap(1, 1, 1)
+bitmap1[0, 0] = 1
+
 
 # Create a TileGrid to hold the bitmap
 tile_grid = displayio.TileGrid(bitmap, pixel_shader=bitmap.pixel_shader)
@@ -69,6 +93,7 @@ group = displayio.Group()
 
 
 # Add the TileGrid to the Group
+
 group.append(tile_grid)
 group.append(line1)
 
@@ -77,6 +102,6 @@ display.show(group)
 
 # Loop forever so you can enjoy your image
 while True:
-    sleep(0.1)
-    scroll(line1)
+    sleep(0.017)
+    pan(line1)
     display.refresh(minimum_frames_per_second=0)  # Write your code here :-)
