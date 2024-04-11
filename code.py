@@ -118,7 +118,7 @@ line1.y = 7
 line2 = adafruit_display_text.label.Label(
     font=terminalio.FONT,
     color=0xFBFF00,
-    text="Patriot Beverages, MA Dept of Elementary and Secondary Education, Rep. Jim Arciero/Sen. Jamie Eldgridge, Bruce & Sue Bonner, Deployed Resources, MITRE, Symbotic, Gene Haas Foundation, UMass Lowell Research Institute, Amazon, Raytheon, ZOLL Medical, Boston Scientific, TE Connectivity, Formlabs, Workers Credit Union, Tuck & Tuck Architects, Earle Industries, Brian & Trina Miller, EMD Millipore, ETM Manufacturing, PTC/OnShape, Tari Radin")
+    text="Patriot Beverages, MA Dept of Elementary and Secondary Education, Rep. Jim Arciero/Sen. Jamie Eldridge, Bruce & Sue Bonner, Deployed Resources, MITRE, Symbotic, Gene Haas Foundation, UMass Lowell Research Institute, Amazon, Raytheon, ZOLL Medical, Boston Scientific, TE Connectivity, Formlabs, Workers Credit Union, Tuck & Tuck Architects, Earle Industries, Brian & Trina Miller, EMD Millipore, ETM Manufacturing, PTC/OnShape, Tari Radin")
 line2.x = display.width
 line2.y = 22
 
@@ -128,7 +128,7 @@ f.append(line2)
 
 
 def scroll(line):
-    line.x = line.x - 2
+    line.x = line.x - 1
     line_width = line.bounding_box[2]
     if line.x < -line_width:
         line.x = display.width
@@ -136,15 +136,15 @@ def scroll(line):
 
 def PaletteSwap(palette):
     oldPalette1 = palette[1]
-    oldPalette2 = palette[2]
-    oldPalette3 = palette[3]
-    oldPalette4 = palette[4]
+#    oldPalette2 = palette[2]
+#    oldPalette3 = palette[3]
+#    oldPalette4 = palette[4]
 
-    palette[1] = oldPalette3
-    palette[2] = oldPalette4
-    palette[3] = oldPalette1
-    palette[4] = oldPalette2
-    display.refresh()
+#    palette[1] = oldPalette3
+#    palette[2] = oldPalette4
+#    palette[3] = oldPalette1
+#    palette[4] = oldPalette2
+#    display.refresh()
 
 
 # You can add more effects in this loop. For instance, maybe you want to set the
@@ -154,5 +154,4 @@ while True:
     scroll(line1)
     scroll(line2)
     sleep(0.0001)
-    display.refresh(minimum_frames_per_second=0)  # Write your code here :-)
-
+    display.refresh(minimum_frames_per_second=32)  # Write your code here :-)
