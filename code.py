@@ -113,14 +113,14 @@ line1 = adafruit_display_text.label.Label(
     color=0x0066FF,
     text="6328 Mechanical Advantage Littleton Robotics")
 line1.x = display.width
-line1.y = 8
+line1.y = 7
 
 line2 = adafruit_display_text.label.Label(
     font=terminalio.FONT,
     color=0xFBFF00,
-    text="Patriot Beverages, Deployed Resources, Bruce & Sue Bonner, NASA, Workers Credit Union, UML ARC, ZOLL, Rockwell Automation, Gene Haas Foundation, ETM Manufacturing, The Mighty Oak Fund, Intuitive Foundation, Millipore Sigma, PTC, Lilly Pulitzer, Tuck & Tuck Architects, Rotary Club of Littleton, Gore Foundation, Brett & Katie Bonner, Trina & Brian Miller, Michelle & Christopher Tuck, MBA Team, Headwall, Table Talk Pies, Burroughs Foundation, Couper Foundation, Bryan Newman, The Quan/Luh Family")
+    text="Patriot Beverages, MA Dept of Elementary and Secondary Education, Rep. Jim Arciero/Sen. Jamie Eldgridge, Bruce & Sue Bonner, Deployed Resources, MITRE, Symbotic, Gene Haas Foundation, UMass Lowell Research Institute, Amazon, Raytheon, ZOLL Medical, Boston Scientific, TE Connectivity, Formlabs, Workers Credit Union, Tuck & Tuck Architects, Earle Industries, Brian & Trina Miller, EMD Millipore, ETM Manufacturing, PTC/OnShape, Tari Radin")
 line2.x = display.width
-line2.y = 23
+line2.y = 22
 
 f.append(tilegrid1)
 f.append(line1)
@@ -128,7 +128,7 @@ f.append(line2)
 
 
 def scroll(line):
-    line.x = line.x - 1
+    line.x = line.x - 2
     line_width = line.bounding_box[2]
     if line.x < -line_width:
         line.x = display.width
@@ -155,3 +155,4 @@ while True:
     scroll(line2)
     sleep(0.0001)
     display.refresh(minimum_frames_per_second=0)  # Write your code here :-)
+
